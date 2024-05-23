@@ -12,7 +12,7 @@ namespace QuickStart
         [SerializeField]
         Vector3 OriginPlayerScale = new(0.1f, 0.1f, 0.1f);
 
-        Vector3 OriginCamPos = new(0f, 0f, 0f);
+        Vector3 OriginCamPos = new(0f, 0.4f, 0f);
 
         [SerializeField] float PlayerSpeedX = 110f;
         [SerializeField] float PlayerSpeedZ = 4f;
