@@ -292,7 +292,7 @@ RectTransform:
   - {fileID: 78400023}
   - {fileID: 1278718768}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -619,7 +619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959878172
 GameObject:
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 1278718770}
   - component: {fileID: 1278718769}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MessageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 653.8303, y: 281}
+  m_AnchoredPosition: {x: 653.8303, y: 332}
   m_SizeDelta: {x: 351.6608, y: 79.5303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278718769
@@ -1239,7 +1239,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840779044
 GameObject:

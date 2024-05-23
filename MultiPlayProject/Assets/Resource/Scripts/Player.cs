@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using Mirror;
 
 namespace QuickStart
@@ -7,7 +7,7 @@ namespace QuickStart
     public class Player : NetworkBehaviour
     {
         [SerializeField]
-        Vector3 OriginPlayerPos = new(0f, -0.3f, 0.6f);
+        Vector3 OriginPlayerInfoPos = new(0f, -0.3f, 0.6f);
 
         [SerializeField]
         Vector3 OriginPlayerScale = new(0.1f, 0.1f, 0.1f);
@@ -17,7 +17,7 @@ namespace QuickStart
         [SerializeField] float PlayerSpeedX = 110f;
         [SerializeField] float PlayerSpeedZ = 4f;
 
-        [SerializeField] TMP_Text PlayerNameText;
+        [SerializeField] TextMesh PlayerNameText;
         [SerializeField] GameObject FloatingInfo;
 
         SynchronizationText _synchronizationtext;
@@ -44,7 +44,7 @@ namespace QuickStart
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = OriginCamPos;
 
-            FloatingInfo.transform.localPosition = OriginPlayerPos;
+            FloatingInfo.transform.localPosition = OriginPlayerInfoPos;
             FloatingInfo.transform.localScale = OriginPlayerScale;
 
             string Name = "Player" + Random.Range(100, 999);
@@ -76,7 +76,7 @@ namespace QuickStart
         {
             PlayerName = _playername;
             PlayerColor = _playercolor;
-            _synchronizationtext.statusText = $"{PlayerNameText} is Participated!";
+            _synchronizationtext.statusText = $"{PlayerName} is Participated!";
         }
 
         [Command]
@@ -84,7 +84,7 @@ namespace QuickStart
         {
             if (_synchronizationtext)
             {
-                _synchronizationtext.statusText = $"{PlayerNameText} is {Random.Range(10, 99)} times say Hello!";
+                _synchronizationtext.statusText = $"{PlayerName} saied Hello! {Random.Range(10, 99)} times.";
             }
         }
 
@@ -94,11 +94,7 @@ namespace QuickStart
         private void Update()
         {
             //プレイヤーがクライアントか否か
-            if (!isLocalPlayer)
-            {
-                FloatingInfo.transform.LookAt(Camera.main.transform);
-                return;
-            }
+            if (!isLocalPlayer) return;
 
             #region//プレイヤー移動
             float MoveX = Input.GetAxis("Horizontal") * Time.deltaTime * PlayerSpeedX;
