@@ -6,6 +6,7 @@ namespace QuickStart
 {
     public class Player : NetworkBehaviour
     {
+        //ã‚«ãƒ¡ãƒ©ã®ä½ç½®ã‚„ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åè¡¨ç¤ºã®é«˜ã•ã‚’èª¿æ•´
         [SerializeField]
         Vector3 OriginPlayerInfoPos = new(0f, -0.3f, 0.6f);
 
@@ -28,15 +29,15 @@ namespace QuickStart
             _synchronizationtext = GameObject.FindObjectOfType<SynchronizationText>();
         }
 
-        #region//ƒT[ƒo[ã‚Å“¯Šú‚³‚¹‚é•Ï”
-        //hook‚ÍSyncVar‚Ì’l‚ª•ÏX‚³‚ê‚½Û‚ÉŒÄ‚Ño‚³‚ê‚éƒƒ\ƒbƒh‚ğw’è‚·‚é‚½‚ß
+        #region//ã‚µãƒ¼ãƒãƒ¼ä¸Šã§åŒæœŸã•ã›ã‚‹å¤‰æ•°
+        //hookã¯SyncVarã®å€¤ãŒå¤‰æ›´ã•ã‚ŒãŸéš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒ‡å®šã™ã‚‹ãŸã‚
         [SyncVar(hook = nameof(OnNameChanged))]
         public string PlayerName;
         [SyncVar(hook = nameof(OnColorChanged))]
         public Color PlayerColor = Color.white;
         #endregion
 
-        #region//“¯‚¶ƒT[ƒo[“à‚Å‚Ì“¯Šú
+        #region//åŒã˜ã‚µãƒ¼ãƒãƒ¼å†…ã§ã®åŒæœŸ
         public override void OnStartLocalPlayer()
         {
             _synchronizationtext._player = this;
@@ -53,14 +54,14 @@ namespace QuickStart
         }
         #endregion
 
-        #region//ƒvƒŒƒCƒ„[‚Ì–¼‘O•\¦
+        #region//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åå‰è¡¨ç¤º
         void OnNameChanged(string _OldText, string _NewText)
         {
             PlayerNameText.text = PlayerName;
         }
         #endregion
 
-        #region//ƒvƒŒƒCƒ„[‚ÌF•Ï‚¦
+        #region//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è‰²å¤‰ãˆ
         void OnColorChanged(Color _OldColor, Color _NewColor)
         {
             PlayerNameText.color = _NewColor;
@@ -70,7 +71,7 @@ namespace QuickStart
         }
         #endregion
 
-        #region//ƒNƒ‰ƒCƒAƒ“ƒg‚ÌƒvƒŒƒCƒ„[î•ñ‚ğƒT[ƒo[‚É“n‚·
+        #region//ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±ã‚’ã‚µãƒ¼ãƒãƒ¼ã«æ¸¡ã™
         [Command]
         public void SetUpPlayerCmd(string _playername, Color _playercolor)
         {
@@ -88,15 +89,15 @@ namespace QuickStart
             }
         }
 
-        //ƒƒ\ƒbƒh‚Ì–¼‘O‚ÍCmd‚©‚çn‚ß‚È‚¢‚Æƒrƒ‹ƒhƒGƒ‰[‚É‚È‚é‚ç‚µ‚¢‚ª¡‚Ì‚Æ‚±‚ë–â‘è‚È‚³‚»‚¤
+        //ãƒ¡ã‚½ãƒƒãƒ‰ã®åå‰ã¯Cmdã‹ã‚‰å§‹ã‚ãªã„ã¨ãƒ“ãƒ«ãƒ‰ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã‚‰ã—ã„ãŒä»Šã®ã¨ã“ã‚å•é¡Œãªã•ãã†
         #endregion
 
         private void Update()
         {
-            //ƒvƒŒƒCƒ„[‚ªƒNƒ‰ƒCƒAƒ“ƒg‚©”Û‚©
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹å¦ã‹
             if (!isLocalPlayer) return;
 
-            #region//ƒvƒŒƒCƒ„[ˆÚ“®
+            #region//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç§»å‹•
             float MoveX = Input.GetAxis("Horizontal") * Time.deltaTime * PlayerSpeedX;
             float MoveZ = Input.GetAxis("Vertical") * Time.deltaTime * PlayerSpeedZ;
 
